@@ -1,0 +1,91 @@
+{
+  "tables": [
+    {
+      "TableName": "chatbot-users",
+      "KeySchema": [
+        { "AttributeName": "userId", "KeyType": "HASH" }
+      ],
+      "AttributeDefinitions": [
+        { "AttributeName": "userId", "AttributeType": "S" },
+        { "AttributeName": "email", "AttributeType": "S" }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "EmailIndex",
+          "KeySchema": [
+            { "AttributeName": "email", "KeyType": "HASH" }
+          ],
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "BillingMode": "PAY_PER_REQUEST"
+    },
+    {
+      "TableName": "chatbot-orders",
+      "KeySchema": [
+        { "AttributeName": "orderId", "KeyType": "HASH" }
+      ],
+      "AttributeDefinitions": [
+        { "AttributeName": "orderId", "AttributeType": "S" },
+        { "AttributeName": "userId", "AttributeType": "S" }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "UserIdIndex",
+          "KeySchema": [
+            { "AttributeName": "userId", "KeyType": "HASH" }
+          ],
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "BillingMode": "PAY_PER_REQUEST"
+    },
+    {
+      "TableName": "chatbot-returns",
+      "KeySchema": [
+        { "AttributeName": "returnId", "KeyType": "HASH" }
+      ],
+      "AttributeDefinitions": [
+        { "AttributeName": "returnId", "AttributeType": "S" },
+        { "AttributeName": "orderId", "AttributeType": "S" }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "OrderIdIndex",
+          "KeySchema": [
+            { "AttributeName": "orderId", "KeyType": "HASH" }
+          ],
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "BillingMode": "PAY_PER_REQUEST"
+    },
+    {
+      "TableName": "chatbot-support-tickets",
+      "KeySchema": [
+        { "AttributeName": "ticketId", "KeyType": "HASH" }
+      ],
+      "AttributeDefinitions": [
+        { "AttributeName": "ticketId", "AttributeType": "S" },
+        { "AttributeName": "userId", "AttributeType": "S" }
+      ],
+      "BillingMode": "PAY_PER_REQUEST"
+    },
+    {
+      "TableName": "chatbot-chat-history",
+      "KeySchema": [
+        { "AttributeName": "chatId", "KeyType": "HASH" }
+      ],
+      "AttributeDefinitions": [
+        { "AttributeName": "chatId", "AttributeType": "S" }
+      ],
+      "BillingMode": "PAY_PER_REQUEST"
+    }
+  ]
+}

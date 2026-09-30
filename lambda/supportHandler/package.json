@@ -1,0 +1,10 @@
+{
+  "name": "support-handler",
+  "version": "1.0.0",
+  "description": "AWS Lambda function for Customer Support Escalation and Ticket management",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.500.0",
+    "@aws-sdk/lib-dynamodb": "^3.500.0"
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "users": [
+    {
+      "userId": "usr_101",
+      "name": "Ahmed Khan",
+      "email": "ahmed@example.com",
+      "password": "Demo@1234",
+      "role": "Customer",
+      "createdAt": "2026-08-15T10:00:00.000Z"
+    },
+    {
+      "userId": "usr_102",
+      "name": "Sara Smith",
+      "email": "sara@example.com",
+      "password": "Demo@1234",
+      "role": "Customer",
+      "createdAt": "2026-08-20T14:30:00.000Z"
+    },
+    {
+      "userId": "usr_103",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "Demo@1234",
+      "role": "Customer",
+      "createdAt": "2026-09-01T09:15:00.000Z"
+    }
+  ],
+  "orders": [
+    {
+      "orderId": "ORD1001",
+      "userId": "usr_101",
+      "productName": "Wireless Bluetooth Headphones",
+      "orderDate": "2026-09-22T08:30:00.000Z",
+      "status": "Shipped",
+      "expectedDelivery": "27 September 2026",
+      "carrier": "FedEx",
+      "trackingNumber": "TRK-893241-US",
+      "totalAmount": 79.99,
+      "refundStatus": "Eligible"
+    },
+    {
+      "orderId": "ORD1002",
+      "userId": "usr_101",
+      "productName": "USB-C Fast Charging Cable (Pack of 3)",
+      "orderDate": "2026-09-25T11:00:00.000Z",
+      "status": "Processing",
+      "expectedDelivery": "30 September 2026",
+      "carrier": "USPS",
+      "trackingNumber": "Pending",
+      "totalAmount": 18.50,
+      "refundStatus": "Eligible (Cancellation Available)"
+    },
+    {
+      "orderId": "ORD1003",
+      "userId": "usr_102",
+      "productName": "Smart Watch Pro Series 7",
+      "orderDate": "2026-09-18T16:45:00.000Z",
+      "status": "Delivered",
+      "expectedDelivery": "22 September 2026",
+      "carrier": "UPS",
+      "trackingNumber": "TRK-441920-US",
+      "totalAmount": 199.99,
+      "refundStatus": "Refund Processing (Return RET501)"
+    },
+    {
+      "orderId": "ORD1024",
+      "userId": "usr_101",
+      "productName": "Gaming Mechanical Keyboard RGB",
+      "orderDate": "2026-09-24T14:15:00.000Z",
+      "status": "Shipped",
+      "expectedDelivery": "28 September 2026",
+      "carrier": "DHL Express",
+      "trackingNumber": "TRK-992144-US",
+      "totalAmount": 129.00,
+      "refundStatus": "Eligible for Return after delivery"
+    },
+    {
+      "orderId": "ORD1025",
+      "userId": "usr_103",
+      "productName": "Laptop Stand Adjustable Ergonomic Aluminum",
+      "orderDate": "2026-09-25T18:00:00.000Z",
+      "status": "Processing",
+      "expectedDelivery": "1 October 2026",
+      "carrier": "USPS Priority",
+      "trackingNumber": "Pending",
+      "totalAmount": 42.00,
+      "refundStatus": "Eligible"
+    }
+  ],
+  "returns": [
+    {
+      "returnId": "RET501",
+      "orderId": "ORD1003",
+      "userId": "usr_102",
+      "productName": "Smart Watch Pro Series 7",
+      "reason": "Battery drains quickly",
+      "status": "Approved",
+      "refundAmount": 199.99,
+      "createdAt": "2026-09-23T10:15:00.000Z"
+    },
+    {
+      "returnId": "RET502",
+      "orderId": "ORD1001",
+      "userId": "usr_101",
+      "productName": "Wireless Bluetooth Headphones",
+      "reason": "Defective left earpiece",
+      "status": "In Transit",
+      "refundAmount": 79.99,
+      "createdAt": "2026-09-24T11:20:00.000Z"
+    }
+  ],
+  "supportTickets": [
+    {
+      "ticketId": "TKT1025",
+      "userId": "usr_101",
+      "customerName": "Ahmed Khan",
+      "subject": "Expedited delivery request for ORD1024",
+      "message": "Customer requested urgent dispatch confirmation from human agent.",
+      "status": "Open",
+      "priority": "Medium",
+      "estimatedResponse": "Within 2 hours",
+      "createdAt": "2026-09-26T20:30:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "productId": "PRD001",
+      "name": "Wireless Bluetooth Headphones",
+      "category": "Audio",
+      "price": 79.99,
+      "inStock": true,
+      "description": "High-fidelity active noise-cancelling wireless over-ear headphones with 30-hour battery life."
+    },
+    {
+      "productId": "PRD002",
+      "name": "USB-C Fast Charging Cable (3-Pack)",
+      "category": "Accessories",
+      "price": 18.50,
+      "inStock": true,
+      "description": "60W braided nylon fast charging cables compatible with USB-C phones and laptops."
+    },
+    {
+      "productId": "PRD003",
+      "name": "Smart Watch Pro Series 7",
+      "category": "Wearables",
+      "price": 199.99,
+      "inStock": true,
+      "description": "Waterproof fitness tracker with heart-rate monitor, GPS, sleep tracking, and OLED display."
+    },
+    {
+      "productId": "PRD004",
+      "name": "Gaming Mechanical Keyboard RGB",
+      "category": "Peripherals",
+      "price": 129.00,
+      "inStock": true,
+      "description": "Hot-swappable tactile switches with customizable per-key RGB backlighting and aluminum frame."
+    },
+    {
+      "productId": "PRD005",
+      "name": "Laptop Stand Adjustable Ergonomic",
+      "category": "Office",
+      "price": 42.00,
+      "inStock": true,
+      "description": "Foldable aluminum notebook riser with 6 height adjustments and silicone anti-slip pads."
+    }
+  ],
+  "chatHistory": [
+    {
+      "chatId": "chat_001",
+      "userId": "usr_101",
+      "message": "Where is my order ORD1024?",
+      "response": "Order #ORD1024 (Gaming Mechanical Keyboard RGB) is currently shipped via DHL Express and is expected to arrive on 28 September 2026.",
+      "timestamp": "2026-09-26T21:00:00.000Z"
+    }
+  ]
+}

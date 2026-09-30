@@ -1,0 +1,49 @@
+{
+  "UserPool": {
+    "PoolName": "CustomerSupportChatbotUserPool",
+    "Policies": {
+      "PasswordPolicy": {
+        "MinimumLength": 8,
+        "RequireUppercase": true,
+        "RequireLowercase": true,
+        "RequireNumbers": true,
+        "RequireSymbols": false,
+        "TemporaryPasswordValidityDays": 7
+      }
+    },
+    "AutoVerifiedAttributes": [
+      "email"
+    ],
+    "UsernameAttributes": [
+      "email"
+    ],
+    "Schema": [
+      {
+        "Name": "email",
+        "AttributeDataType": "String",
+        "Required": true,
+        "Mutable": true
+      },
+      {
+        "Name": "name",
+        "AttributeDataType": "String",
+        "Required": true,
+        "Mutable": true
+      }
+    ],
+    "UserVerificationType": "code"
+  },
+  "UserPoolClient": {
+    "ClientName": "CustomerSupportChatbotWebClient",
+    "GenerateSecret": false,
+    "ExplicitAuthFlows": [
+      "ALLOW_USER_PASSWORD_AUTH",
+      "ALLOW_REFRESH_TOKEN_AUTH",
+      "ALLOW_USER_SRP_AUTH"
+    ],
+    "PreventUserExistenceErrors": "ENABLED",
+    "SupportedIdentityProviders": [
+      "COGNITO"
+    ]
+  }
+}

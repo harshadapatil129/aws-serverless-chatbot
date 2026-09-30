@@ -1,0 +1,14 @@
+{
+  "name": "serverless-customer-support-chatbot",
+  "version": "1.0.0",
+  "description": "Serverless Customer Support Chatbot using AWS Services & React",
+  "scripts": {
+    "start:frontend": "npm --prefix frontend run dev",
+    "start:backend": "npm --prefix backend start",
+    "test:frontend": "npm --prefix frontend test",
+    "test:backend": "npm --prefix backend test",
+    "test:lambda": "node test-lambdas.js",
+    "test": "npm run test:frontend && npm run test:backend && npm run test:lambda",
+    "build": "npm --prefix frontend run build"
+  }
+}

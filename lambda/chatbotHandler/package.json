@@ -1,0 +1,11 @@
+{
+  "name": "chatbot-handler",
+  "version": "1.0.0",
+  "description": "AWS Lambda function for Amazon Lex fulfillment and API Gateway chat processing",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.500.0",
+    "@aws-sdk/lib-dynamodb": "^3.500.0",
+    "@aws-sdk/client-lex-runtime-v2": "^3.500.0"
+  }
+}

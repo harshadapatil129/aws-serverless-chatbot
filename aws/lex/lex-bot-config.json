@@ -1,0 +1,193 @@
+{
+  "botName": "CustomerSupportBot",
+  "description": "Serverless customer support chatbot handling order queries, returns, and agent escalation",
+  "version": "1.0.0",
+  "locale": "en_US",
+  "sessionTimeoutInSeconds": 300,
+  "intents": [
+    {
+      "intentName": "Greeting",
+      "description": "Welcomes user and presents available capabilities",
+      "sampleUtterances": [
+        "Hello",
+        "Hi",
+        "Hey",
+        "Good morning",
+        "Good afternoon",
+        "Hi there",
+        "Hello support"
+      ],
+      "responses": [
+        "Hello! Welcome to Customer Support. I can help you track orders, initiate returns, check refund policies, or connect you with a human agent. How can I help today?"
+      ]
+    },
+    {
+      "intentName": "CheckOrderStatus",
+      "description": "Checks the status of an existing customer order",
+      "sampleUtterances": [
+        "Where is my order?",
+        "Check my order",
+        "What is my order status?",
+        "Can you track my order?",
+        "Where is order {orderId}?",
+        "Order status {orderId}",
+        "Track package {orderId}",
+        "Status of order {orderId}"
+      ],
+      "slots": [
+        {
+          "name": "orderId",
+          "description": "Customer order identifier e.g. ORD1001",
+          "slotTypeName": "AMAZON.AlphaNumeric",
+          "required": true,
+          "prompt": "Please provide your order ID (e.g., ORD1001, ORD1024) so I can check the current status."
+        }
+      ],
+      "fulfillmentActivity": {
+        "type": "CodeHook"
+      }
+    },
+    {
+      "intentName": "TrackOrder",
+      "description": "Provides tracking number, carrier and expected delivery date",
+      "sampleUtterances": [
+        "Track my package",
+        "Tracking details for {orderId}",
+        "Carrier details for {orderId}",
+        "When will {orderId} arrive?"
+      ],
+      "slots": [
+        {
+          "name": "orderId",
+          "description": "Order identifier",
+          "slotTypeName": "AMAZON.AlphaNumeric",
+          "required": true,
+          "prompt": "Please tell me the Order ID you want to track."
+        }
+      ],
+      "fulfillmentActivity": {
+        "type": "CodeHook"
+      }
+    },
+    {
+      "intentName": "ReturnProduct",
+      "description": "Initiates a product return and refund review workflow",
+      "sampleUtterances": [
+        "I want to return my product",
+        "How can I return an item?",
+        "I need to request a return",
+        "Return an order",
+        "Return product for order {orderId}",
+        "I want to return order {orderId}"
+      ],
+      "slots": [
+        {
+          "name": "orderId",
+          "description": "Order ID to return",
+          "slotTypeName": "AMAZON.AlphaNumeric",
+          "required": true,
+          "prompt": "Sure. Please provide your order ID to initiate the return process."
+        },
+        {
+          "name": "returnReason",
+          "description": "Reason for return",
+          "slotTypeName": "AMAZON.FreeFormInput",
+          "required": true,
+          "prompt": "What is the reason for your return? (e.g., Defective, Wrong size, Changed mind)"
+        }
+      ],
+      "fulfillmentActivity": {
+        "type": "CodeHook"
+      }
+    },
+    {
+      "intentName": "RefundStatus",
+      "description": "Explains refund policy or checks specific order refund state",
+      "sampleUtterances": [
+        "What is your refund policy?",
+        "How do refunds work?",
+        "When will I get my refund?",
+        "Refund status for order {orderId}",
+        "Did you refund {orderId}?",
+        "How long do refunds take?"
+      ],
+      "slots": [
+        {
+          "name": "orderId",
+          "description": "Optional order ID to check refund status",
+          "slotTypeName": "AMAZON.AlphaNumeric",
+          "required": false
+        }
+      ],
+      "fulfillmentActivity": {
+        "type": "CodeHook"
+      }
+    },
+    {
+      "intentName": "ProductInformation",
+      "description": "Lists product categories and answers product inquiries",
+      "sampleUtterances": [
+        "What products do you sell?",
+        "Tell me about your products",
+        "Show me product catalog",
+        "Product information",
+        "Do you sell headphones?",
+        "Do you sell keyboards?"
+      ],
+      "fulfillmentActivity": {
+        "type": "CodeHook"
+      }
+    },
+    {
+      "intentName": "ContactSupport",
+      "description": "Escalates conversation to a live human representative with support ticket",
+      "sampleUtterances": [
+        "I want to talk to an agent",
+        "Connect me to a human",
+        "Human help",
+        "Contact support",
+        "Speak with customer service",
+        "I need an agent"
+      ],
+      "fulfillmentActivity": {
+        "type": "CodeHook"
+      }
+    },
+    {
+      "intentName": "BusinessHours",
+      "description": "Provides hours of operation and customer support availability",
+      "sampleUtterances": [
+        "What are your business hours?",
+        "When are you open?",
+        "Support hours",
+        "What time does customer service close?",
+        "Are you open on weekends?"
+      ],
+      "responses": [
+        "Our customer support team is available Monday through Friday from 9:00 AM to 6:00 PM EST. However, this AI assistant is online 24/7 to help you track orders and create support tickets anytime!"
+      ]
+    },
+    {
+      "intentName": "Goodbye",
+      "description": "Handles conversation sign-off",
+      "sampleUtterances": [
+        "Bye",
+        "Goodbye",
+        "See you later",
+        "Thanks, bye",
+        "Have a great day"
+      ],
+      "responses": [
+        "Thank you for contacting customer support. Have a wonderful day! If you need anything else, feel free to ask."
+      ]
+    },
+    {
+      "intentName": "FallbackIntent",
+      "description": "Default intent invoked when utterance is not recognized",
+      "sampleUtterances": [],
+      "responses": [
+        "I am not sure I understood that. You can ask me to track an order (e.g., 'Where is order ORD1001?'), request a return, check our refund policy, or type 'talk to an agent' for human support."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "CustomerSupportChatbotAPI",
+    "description": "Serverless REST API for Customer Support Chatbot frontend integration",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/chat": {
+      "post": {
+        "summary": "Send user message to chatbot backend (Lex & Lambda)",
+        "responses": {
+          "200": {
+            "description": "Successful bot response"
+          },
+          "400": {
+            "description": "Invalid input message"
+          },
+          "500": {
+            "description": "Backend fulfillment error"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws_proxy",
+          "httpMethod": "POST",
+          "uri": "arn:aws:apigateway:${aws:region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws:region}:${aws:accountId}:function:chatbotHandler/invocations",
+          "passthroughBehavior": "when_no_match"
+        }
+      }
+    },
+    "/api/orders/{orderId}": {
+      "get": {
+        "summary": "Retrieve status and tracking for an order",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order found"
+          },
+          "404": {
+            "description": "Order not found"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws_proxy",
+          "httpMethod": "POST",
+          "uri": "arn:aws:apigateway:${aws:region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws:region}:${aws:accountId}:function:orderHandler/invocations"
+        }
+      }
+    },
+    "/api/returns": {
+      "post": {
+        "summary": "Initiate a product return request",
+        "responses": {
+          "201": {
+            "description": "Return registered"
+          },
+          "400": {
+            "description": "Invalid return request"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws_proxy",
+          "httpMethod": "POST",
+          "uri": "arn:aws:apigateway:${aws:region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws:region}:${aws:accountId}:function:orderHandler/invocations"
+        }
+      }
+    },
+    "/api/refunds/{orderId}": {
+      "get": {
+        "summary": "Get refund status for an order",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Refund details"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws_proxy",
+          "httpMethod": "POST",
+          "uri": "arn:aws:apigateway:${aws:region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws:region}:${aws:accountId}:function:orderHandler/invocations"
+        }
+      }
+    },
+    "/api/products": {
+      "get": {
+        "summary": "List sample products",
+        "responses": {
+          "200": {
+            "description": "List of products"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws_proxy",
+          "httpMethod": "POST",
+          "uri": "arn:aws:apigateway:${aws:region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws:region}:${aws:accountId}:function:orderHandler/invocations"
+        }
+      }
+    },
+    "/api/support": {
+      "post": {
+        "summary": "Create human support escalation ticket",
+        "responses": {
+          "201": {
+            "description": "Support ticket created"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws_proxy",
+          "httpMethod": "POST",
+          "uri": "arn:aws:apigateway:${aws:region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws:region}:${aws:accountId}:function:supportHandler/invocations"
+        }
+      }
+    }
+  }
+}
